@@ -4,6 +4,7 @@
     {{ $post->content }}
   </x-slot:title>
   <h1>{{ $post->content }}</h1>
+
 </ul>   
 <a href="/posts/{{ $post->id }}/edit" >Rediģēt</a>
 

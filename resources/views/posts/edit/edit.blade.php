@@ -5,11 +5,16 @@
   <form action="/posts/{{ $post->id }}" method="POST">
     @csrf
     <label> 
-        <input value="{{ old('content', $todo->content) }}" name="content">  
+        <input value="{{ old('content', $post->content) }}" name="content">  
     </label> 
 
+    <label>
+        Category unavailable
+        <input name="category_id" type="hidden" value="1"> 
+    <!--    <input name="category_id" value="{{ old('category_id', $post->category_id) }}">  --> 
+    </label>
 
-    @error("completed")
+    @error("category_id")
         <p>{{ $message }}</p>
     @enderror
     @error("content")

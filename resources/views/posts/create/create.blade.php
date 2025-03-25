@@ -4,12 +4,17 @@
 
 <form action="/posts" method="POST">
 @csrf
-  <input name="content" />
+  <input name="content" />  
+  <input name="category_id" value="1"/>  
+  <label for="category">Select Category:</label>
 
-</form>
   @error("content")
+  <p>{{ $message }}</p>
+@enderror
+@error("category_id")
   <p>{{ $message }}</p>
 @enderror
   <button>Saglabāt</button>
 </form>
 </x-layout>
+               

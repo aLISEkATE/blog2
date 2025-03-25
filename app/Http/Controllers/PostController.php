@@ -12,7 +12,7 @@ class PostController extends Controller
         return view("posts.index", compact("posts"));
     }
 
-    public function show(Post $todo) 
+    public function show(Post $post) 
     {
         return view("posts.show", compact("post"));
     }
@@ -23,14 +23,15 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
+        
         $validated = $request->validate([
             "content" => ["required", "max:255"],
-            "category_id" => ["required"]
+            "category_id" => ["required", "max:100"]
         ]);
-
+    
         Post::create([
             "content" => $request->content,
-            "category_id" => "1"
+            "category_id" => $request->category_id
         ]);
 
         return redirect("/posts");
