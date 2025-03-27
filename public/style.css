@@ -1,10 +1,119 @@
-h1{color: hotpink;}
-body{background-color:#212121;
+/* General Page Styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #212121;
+  color: beige;
+  margin: 0;
+  padding: 20px;
+}
 
-    color:white;}
-p{color:white;}
-li::marker {
-    color: hotpink;
-  }
-a{text-decoration: none;
-color:beige}
+/* Forum Container */
+.forum-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Post Styling */
+.post {
+  padding: 15px;
+  border-bottom: 1px solid hotpink;
+}
+
+.post h1 {
+  color: hotpink;
+}
+
+.post h2 {
+  color: beige;
+  font-size: 18px;
+}
+
+/* Unstyled Hotpink Links */
+a {
+  color: hotpink;
+  text-decoration: none; /* Removes underline */
+  font-weight: bold;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* Edit & Delete Buttons */
+.actions {
+  margin-top: 10px;
+}
+
+.actions button {
+  background-color: #ff3366; /* Slightly darker pink for delete */
+  color: #212121;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.actions button:hover {
+  opacity: 0.8;
+}
+
+/* Comment Form */
+.comment-form {
+  margin-top: 20px;
+}
+
+.comment-form textarea {
+  width: 100%;
+  padding: 10px;
+  background: #212121;
+  border: 1px solid hotpink;
+  border-radius: 5px;
+  resize: none;
+  color: beige;
+}
+
+.comment-form button {
+  margin-top: 10px;
+  background-color: hotpink;
+  color: #212121;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.comment-form button:hover {
+  background-color: #ff66a3;
+}
+
+/* Comments Section */
+.comments {
+  margin-top: 20px;
+}
+
+.comment {
+  background: #2a2a2a;
+  padding: 10px;
+  border-left: 4px solid hotpink;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.comment p {
+  margin: 0;
+  font-size: 16px;
+  color: beige;
+}
+
+.comment small {
+  display: block;
+  margin-top: 5px;
+  color: hotpink;
+  font-size: 12px;
+}

@@ -8,17 +8,22 @@ use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
-    public function store(Request $request, Post $post)
-    {
-        $request->validate([
-            'content' => 'required|max:255'
-        ]);
+// In CommentController.php
+public function store(Request $request, Post $post)
+{
+    $request->validate([
+        'content' => ["required", "max:20"],
+        'name' =>["required", "max:20"]
+    ]);
 
-        Comment::create([
-            'post_id' => $post->id,
-            'content' => $request->content
-        ]);
+    
+    Comment::create([
+        'post_id' => $post->id,
+        'content' => $request->content,
+        'name' => $request->name
+    ]);
 
-        return redirect()->back();
-    }
+    return redirect()->back();
+}
+
 }

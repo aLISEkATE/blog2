@@ -14,11 +14,19 @@
     <button>Delete</button>
   </form>
 
-  <form action="{{ route('comments.store', $post->id) }}" method="POST">
+  <form action="{{ route('comments.store', $post) }}" method="POST">
     @csrf
-    <textarea name="content" required></textarea>
-    <button type="submit">Add Comment</button>
-  </form>
+    <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="{{ old('name') }}" required>
+    </div>
+    <div>
+        <label for="content">Comment</label>
+        <textarea id="content" name="content" required>{{ old('content') }}</textarea>
+    </div>
+    <button type="submit">Post Comment</button>
+</form>
+
 
   <h3>Comments:</h3>
   @foreach ($post->comments as $comment)
