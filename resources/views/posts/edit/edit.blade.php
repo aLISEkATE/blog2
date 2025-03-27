@@ -7,12 +7,16 @@
     <label> 
         <input value="{{ old('content', $post->content) }}" name="content">  
     </label> 
+    <label>Select Category:</label>
+<select name="category_id">
+    <option value="">Select a Category</option>
+    @foreach ($categories as $category)
+        <option value="{{ $category->id }}" {{ $post->category_id == $category->id ? 'selected' : '' }}>
+            {{ $category->category_name }}
+        </option>
+    @endforeach
+</select>
 
-    <label>
-        Category unavailable
-        <input name="category_id" type="hidden" value="1"> 
-    <!--    <input name="category_id" value="{{ old('category_id', $post->category_id) }}">  --> 
-    </label>
 
     @error("category_id")
         <p>{{ $message }}</p>

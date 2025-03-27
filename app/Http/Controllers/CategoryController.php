@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -17,13 +18,13 @@ class CategoryController extends Controller
         return view("categories.show", compact("category"));
     }
 
-    public function create(Category $create) 
+    public function create() 
     {
-        return view("categories.create.create", compact("create"));
+        return view("categories.create");
     }
+
     public function store(Request $request)
     {
-        
         $validated = $request->validate([
             "category_name" => ["required", "max:20"]
         ]);
@@ -49,13 +50,12 @@ class CategoryController extends Controller
 
     public function edit(Category $category) 
     {
-        return view("categories.edit.edit", compact("category"));
+        return view("categories.edit", compact("category"));
     }
 
     public function destroy(Category $category) 
     {
-      $category->delete();
-      return redirect("/categories");
+        $category->delete();
+        return redirect("/categories");
     }
-    
 }

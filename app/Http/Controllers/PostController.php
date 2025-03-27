@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -9,21 +10,26 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        $posts = Post::with('category')->get(); // Fetch posts with category
         return view("posts.index", compact("posts"));
     }
 
     public function show(Post $post) 
     {
+        $post->load('category', 'comments');
         return view("posts.show", compact("post"));
     }
 
-    public function create(Post $create) 
+    public function create(Post $categories) 
     {
-        return view("posts.create.create", compact("create"));
+    
+        $categories = Category::all(); 
+      
+        return view("posts.create.create", compact("categories"));
     }
     public function store(Request $request)
     {
-        
+       
         $validated = $request->validate([
             "content" => ["required", "max:255"],
             "category_id" => ["required", "max:100"]
@@ -39,6 +45,7 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        
         $validated = $request->validate([
             "content" => ["required", "max:255"],
             "category_id" => ["required"]
@@ -52,9 +59,10 @@ class PostController extends Controller
     }
 
     public function edit(Post $post) 
-    {
-        return view("posts.edit.edit", compact("post"));
-    }
+{
+    $categories = Category::all(); 
+    return view("posts.edit.edit", compact("post", "categories"));
+}
 
     public function destroy(Post $post) 
     {
@@ -63,3 +71,4 @@ class PostController extends Controller
     }
     
 }
+

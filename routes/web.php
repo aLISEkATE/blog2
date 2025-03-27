@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\CommentController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,3 +36,4 @@ Route::get('/categories/{category}', [CategoryController::class, 'show']);
 
 Route::get('/categories/{category}/edit', [CategoryController::class, 'edit']);
 
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
